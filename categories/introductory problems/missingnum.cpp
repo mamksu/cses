@@ -1,22 +1,33 @@
-#include<iostream>
 #include <bits/stdc++.h>
-
+#pragma GCC optimize("Ofast")
+#pragma GCC target("fma,sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2,tune=native")
+#pragma GCC optimize("unroll-loops")
 using namespace std;
+long n;
 
-int n, x, sum, treba;
-vector<int> a;
+char buffer[200000 * 8], *p_in{buffer}, *p_out{buffer};
 
-int main() {
-    cin >> n;
-
-    sum = 0;
-    treba = n;
-
-    for (int i = 1; i < n; ++i) {
-        cin >> x;
-
-        sum += x;
-        treba += i;
+inline ll read()
+{
+    ll t = 0;
+    char c;
+    while ((c = getchar_unlocked()) != '\n' && c != ' ' && c != EOF)
+    {
+        t = t * 10 + c - '0';
     }
-    cout << treba - sum;
+    return t;
+}
+
+int main()
+{
+    n = read();
+
+    int_fast64_t sum{static_cast<int_fast64_t>(n + 1) * n / 2};
+
+    while (--n)
+    {
+        sum -= read();
+    }
+
+    printf("%d", sum);
 }
