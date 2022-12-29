@@ -1,7 +1,7 @@
 #pragma GCC optimize("O3")
-// #pragma GCC optimize("unroll-loops")
-// #pragma GCC target("popcnt")
-// #pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,fma,abm,mmx,avx,avx2,tune=native")
+#pragma GCC optimize("unroll-loops")
+#pragma GCC target("popcnt")
+#pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,fma,abm,mmx,avx,avx2,tune=native")
 // #pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,fma,abm,mmx,avx,avx2")
 // #pragma GCC target("avx2")
 
@@ -17,73 +17,31 @@ long long CEIL(long long n, long long div) { return n >= 0 ? (n + div - 1) / div
 // 0x3f3f3f3f
 using namespace std;
 using ll = long long;
-const int MAXN = 1003;
-char grid[MAXN][MAXN];
-queue<pair<int, int>> q;
-const int INF = 0x3f3f3f3f;
-int dist[MAXN][MAXN], n, m;
-
-int di[] = {1, 0, 0, -1};
-int dj[] = {0, -1, 1, 0};
-
-inline void bfs()
-{
-    while (!q.empty())
-    {
-        auto [index, jndex] = q.front();
-        q.pop();
-
-        for (int k = 0; k < 4; ++k)
-        {
-            int ni = index + di[k], nj = jndex + dj[k];
-
-            if (ni > -1 && nj > -1 && ni < n && nj < m && dist[index][jndex] + 1 < dist[ni][nj])
-            {
-                dist[ni][nj] = dist[index][jndex] + 1;
-                q.push({index, jndex});
-            }
-        }
-    }
-}
-
-inline void printdist()
-{
-    for (int i = 0; i < n; ++i)
-    {
-        for (int j = 0; j < m; ++j)
-        {
-            if (dist[i][j] == INF)
-                cout << "-1 ";
-            else
-                cout << dist[i][j] << " ";
-        }
-
-        cout << "\n";
-    }
-}
+const int MAXN = 1005;
+char g[MAXN][MAXN];
+int d[MANX][MAXN];
 
 signed main()
 {
     cin.tie(NULL)->sync_with_stdio(false);
     cin.exceptions(cin.failbit);
 
+    int n, m;
     cin >> n >> m;
 
     for (int i = 0; i < n; ++i)
     {
         for (int j = 0; j < m; ++j)
         {
-            cin >> grid[i][j];
-            if (grid[i][j] == 'M')
-                q.push({i, j});
-            // dist[i][j] = ((grid[i][j] == '.' || grid[i][j] == 'A') ? INF : 0);
-            if (grid[i][j] != 'M')
-                dist[i][j] = INF;
+            cin >> g[i][j];
+
+            if(g[i][j] == 'A')
+            {
+                d[i][j] = 0;
+                c[]
+            }
         }
     }
-
-    bfs();
-    printdist();
 
     return 0;
 }
